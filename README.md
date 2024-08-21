@@ -45,3 +45,23 @@ To train the DQN agent, run the `training.py` script:
 ```
 python training.py
 ```
+
+You can customize the training parameters, such as the number of episodes, learning rate, and epsilon settings, directly in the `train_dqn` function call.
+
+
+###Example Output
+The training process will output information about each episode, including the number of steps taken to solve the puzzle (or a timeout if the puzzle is not solved within the step limit):
+
+```
+Episode: 0/100, Score: 9, Epsilon: 0.05
+Episode: 1/100, Score: 15, Epsilon: 0.05
+...
+Episode: 99/100, Score: 8, Epsilon: 0.05
+```
+
+
+## Future Improvements
+- Visualization: Add a visualization of the puzzle and the agent's actions during training.
+- Advanced Training Techniques: Experiment with different neural network architectures, reward functions, and training strategies to improve performance.
+- Generalization: Extend the agent to solve puzzles of different sizes (e.g., 3x3 or 5x5).
+
