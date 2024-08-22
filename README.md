@@ -50,10 +50,10 @@ You can customize the training parameters, such as the number of episodes, learn
 The training process will output information about each episode, including the number of steps taken to solve the puzzle (or a timeout if the puzzle is not solved within the step limit):
 
 ```
-Episode: 0/100, Score: 9, Epsilon: 0.05
-Episode: 1/100, Score: 15, Epsilon: 0.05
+Episode: 0/10, Score: 9, Epsilon: 0.05
+Episode: 1/10, Score: 15, Epsilon: 0.05
 ...
-Episode: 99/100, Score: 8, Epsilon: 0.05
+Episode: 9/10, Score: 8, Epsilon: 0.05
 ```
 
 
