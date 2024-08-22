@@ -23,7 +23,7 @@ The project is organized into the following files:
 
 ## Requirements
 
-- Python 3.x
+- Python 3.6+
 - NumPy
 - TensorFlow
 - Matplotlib (optional, for visualization if added)
