@@ -51,7 +51,7 @@ def train_dqn(episodes, num_shuffles=1, max_steps_per_episode=10, epsilon=1.0, e
 
             # Break the loop if the puzzle is solved
             if done:
-                print(f"Episode: {e}/{episodes}, Score: {time}, Epsilon: {agent.epsilon:.2}")
+                print(f"Episode: {e}/{episodes}, Score: {time}, Epsilon: {agent.epsilon: .2f}")
                 break
 
             # Break the loop if the maximum number of steps is reached
@@ -70,3 +70,4 @@ def train_dqn(episodes, num_shuffles=1, max_steps_per_episode=10, epsilon=1.0, e
     # Save the trained model weights
     agent.save(filename)
 
+# Train the DQN agent with the specified parameters
