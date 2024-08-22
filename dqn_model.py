@@ -1,6 +1,7 @@
 import tensorflow as tf
 from tensorflow.keras import models, layers, optimizers
 
+
 class DQN:
     def __init__(self, state_size, action_size, learning_rate = 1e-5):
         """
