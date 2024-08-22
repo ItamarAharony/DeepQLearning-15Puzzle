@@ -10,6 +10,7 @@ class DQN:
         """
         self.state_size = state_size
         self.action_size = action_size
+        self.learning_rate=learning_rate
         self.model = self._build_model()  # Build the neural network model
     
     def _build_model(self):
@@ -43,7 +44,7 @@ class DQN:
         model.add(layers.Dense(self.action_size, activation='linear'))
         
         # Compile the model with mean squared error loss and Adam optimizer
-        model.compile(loss='mse', optimizer=optimizers.Adam(learning_rate=learning_rate))
+        model.compile(loss='mse', optimizer=optimizers.Adam(learning_rate=self.learning_rate))
                 
         return model
 
