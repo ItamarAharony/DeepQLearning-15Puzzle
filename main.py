@@ -1,5 +1,6 @@
 from training import train_dqn
 
+
 if __name__ == "__main__":
     """
     The file to which the Deep-Q Network weights and biases will be saved is filename="dqn_15_puzzle.weights.h5".
