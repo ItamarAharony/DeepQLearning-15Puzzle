@@ -8,8 +8,5 @@ if __name__ == "__main__":
     Otherwise, if dqn_15_puzzle.weights.h5 exists, resume_training=False will overwrite the file while resume_training=True will resume the training from the saved model
     in dqn_15_puzzle.weights.h5.
     """
-    for i in range(1,12):
-        print(f"step {i}")
-        print("==============================")
-        train_dqn(episodes=100, num_shuffles=i, max_steps_per_episode=50, epsilon=0.3/i, epsilon_decay=1, learning_rate=1e-3, resume_training=True, filename="dqn_15_puzzle.weights.h5")
-        
+    train_dqn(episodes=100, num_shuffles=0, max_steps_per_episode=10, epsilon=0.1, epsilon_decay=1, learning_rate=0.01, resume_training=True, filename="dqn_15_puzzle.weights.h5")
+    
