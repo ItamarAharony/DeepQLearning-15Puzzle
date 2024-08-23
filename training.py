@@ -1,7 +1,7 @@
 from fifteen_puzzle import FifteenPuzzle
 from dqn_agent import DQNAgent
 
-def train_dqn(episodes, num_shuffles=1, max_steps_per_episode=10, epsilon=1.0, epsilon_decay=0.999, learning_rate=0.01, resume_training=False, filename="dqn_15_puzzle.weights.h5"):
+def train_dqn(episodes, num_shuffles=1, max_steps_per_episode=10, epsilon=1.0, epsilon_decay=0.999, learning_rate=1e-5, resume_training=False, filename="dqn_15_puzzle.weights.h5"):
     """
     Train a DQN agent to solve the 15-puzzle game.
     :param episodes: Number of episodes (games) to train the agent.

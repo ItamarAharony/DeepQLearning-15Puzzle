@@ -1,74 +1,59 @@
-import tensorflow as tf
-from tensorflow.keras import models, layers, optimizers
-
+from tensorflow.keras import models
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Conv2D, Flatten, Reshape
+from tensorflow.keras.optimizers import Adam
 
 class DQN:
-    def __init__(self, state_size, action_size, learning_rate = 1e-5):
-        """
-        Initialize the DQN (Deep Q-Network).
-        :param state_size: The size of the input state (e.g., 16 for a 4x4 puzzle).
-        :param action_size: The number of possible actions (e.g., 4 for UP, DOWN, LEFT, RIGHT).
-        """
+    def __init__(self, state_size, action_size, learning_rate=1e-5):
         self.state_size = state_size
         self.action_size = action_size
-        self.learning_rate=learning_rate
-        self.model = self._build_model()  # Build the neural network model
-    
+        self.learning_rate = learning_rate
+        self.model = self._build_model()
+
     def _build_model(self):
         """
-        Build the DQN model using TensorFlow/Keras.
-        The model architecture includes:
-        - A reshaping layer to convert the input to 4x4x1 (for a 4x4 puzzle)
-        - A convolutional layer to extract features on the scale of 2 x 2 puzzle tiles
-        - Two dense layers for learning
-        - An output layer with linear activation for Q-values.
-        :return: The compiled Keras model.
+        Build a convolutional neural network model for the 15-puzzle.
         """
-        model = models.Sequential()  # Initialize a sequential model
+        model = Sequential()
 
         # Reshape the input to (4, 4, 1) to represent the 4x4 board with a single channel
-        model.add(layers.Reshape((4, 4, 1), input_shape=(self.state_size,)))
-        
-        # Add a convolutional layer with 32 filters and a 2x2 kernel, using ReLU activation
-        model.add(layers.Conv2D(32, (2, 2), activation='relu', padding='same'))
-        
-        # Flatten the output of the convolutional layer to feed into dense layers
-        model.add(layers.Flatten())
-        
-        # Add the first dense layer with 256 neurons and ReLU activation
-        model.add(layers.Dense(256, activation='relu'))
-        
-        # Add the second dense layer with 256 neurons and ReLU activation
-        model.add(layers.Dense(256, activation='relu'))
-        
-        # Output layer with 'action_size' neurons (one for each possible action) and linear activation
-        model.add(layers.Dense(self.action_size, activation='linear'))
-        
-        # Compile the model with mean squared error loss and Adam optimizer
-        model.compile(loss='mse', optimizer=optimizers.Adam(learning_rate=self.learning_rate))
-                
+        model.add(Reshape((4, 4, 1), input_shape=(self.state_size,)))
+
+        # Convolutional layer with 32 filters, 2x2 kernel, ReLU activation
+        model.add(Conv2D(32, (2, 2), activation='relu', padding='same'))
+
+        # Flatten the output of the convolutional layer
+        model.add(Flatten())
+
+        # Two dense layers with 256 units each
+        model.add(Dense(256, activation='relu'))
+        model.add(Dense(256, activation='relu'))
+
+        # Output layer with the number of actions as units
+        model.add(Dense(self.action_size, activation='linear'))
+
+        # Compile the model with Mean Squared Error loss and Adam optimizer
+        model.compile(loss='mse', optimizer=Adam(learning_rate=self.learning_rate))
+
         return model
 
-    def predict(self, state):
+    def save(self, file_path):
         """
-        Predict Q-values for a given state.
-        :param state: The input state (expected to be preprocessed).
-        :return: A numpy array containing Q-values for all possible actions.
+        Save only the model's weights to the specified file path.
         """
-        return self.model.predict(state, verbose=0)
+        self.model.save_weights(file_path)
 
-    def train(self, state, q_values):
+
+    def load(self, file_path):
         """
-        Train the DQN model on a single state-Q-value pair.
-        :param state: The input state (expected to be preprocessed).
-        :param q_values: The target Q-values for the given state.
+        Load the model's weights from the specified file path.
         """
-        self.model.fit(state, q_values, epochs=1, verbose=0)
+        self.model.load_weights(file_path)
+
 
     def update_weights(self, other_model):
         """
-        Update the weights of this model with the weights of another model.
-        Typically used to synchronize the target model with the current model.
-        :param other_model: The model whose weights are to be copied.
+        Update the model's weights with those from another model.
+        :param other_model: Another DQN model object from which to copy weights.
         """
-        self.model.set_weights(other_model.get_weights())
+        self.model.set_weights(other_model.model.get_weights())
