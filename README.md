@@ -24,16 +24,48 @@ The project is organized into the following files:
 
 ## Requirements
 
-- Python 3.6+
+- Python 3.8
 - NumPy
-- TensorFlow
+- TensorFlow 2.13
 - Matplotlib (optional, for visualization if added)
 
 You can install the required packages using pip:
 
-```
-pip install numpy tensorflow matplotlib
-```
+
+### Set Up the Environment
+
+#### First-Time activation
+This project uses Python version 3.8, any other version may have conflicting dependencies between Tensorflow and NumPy. 
+
+
+```conda create -n py38 python=3.8```
+
+```activate py38```
+
+
+
+Ensure you have the required dependencies installed. You can create a virtual environment and install the dependencies using the provided `requirements.txt` file:
+
+
+```pip install -r requirements.txt```
+
+To exit the virtual environment:
+
+```deactivate```
+
+
+#### Returning to the Virtual Environment
+If you have already completed the first-time activation, enter it by typing the command:
+
+
+```activate py38```
+
+
+and exit by typing:
+
+
+```deactivate```
+
 
 
 ## Running the Training code
