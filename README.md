@@ -12,6 +12,7 @@ The project is organized into the following files:
 - **dqn_model.py**: Defines the `DQN` class, which builds and manages the neural network model used by the agent. The model includes a convolutional layer to process the puzzle's board state.
 - **dqn_agent.py**: Contains the `DQNAgent` class, which implements the agent's behavior, including action selection, experience replay, and updating the target model.
 - **training.py**: Contains the `train_dqn` function, which runs the training process for the DQN agent. It initializes the environment and agent, and then iteratively trains the agent through multiple episodes.
+- **testing.py**: Script to test the trained model on a specific 15-puzzle configuration.
 
 ## How It Works
 
@@ -35,12 +36,12 @@ pip install numpy tensorflow matplotlib
 ```
 
 
-## Running the Code
+## Running the Training code
 
-To train the DQN agent, run the `training.py` script:
+To train the DQN agent, run the `main.py` script:
 
 ```
-python training.py
+python main.py
 ```
 
 You can customize the training parameters, such as the number of episodes, learning rate, and epsilon settings, directly in the `train_dqn` function call.
@@ -55,8 +56,27 @@ Episode: 1/10, Score: 15, Epsilon: 0.05
 ...
 Episode: 9/10, Score: 8, Epsilon: 0.05
 ```
+## Testing the Model
 
+After training the model, you can test it on a specific puzzle configuration using the testing.py file.
 
+1. Ensure the model weights are saved (e.g., `dqn_15_puzzle.weights.h5`).
+2. Run the `testing.py` script:
+```
+python testing.py
+```
+This script will load the trained model and predict the best next move for a given puzzle configuration.
+### Example:
+Given the following 15-puzzle state:
+
+```
+1  2  3  4
+5  6  7  8
+9  10 11 12
+13 14 0  15
+
+```
+where '0' is the empty tile.
 ## Future Improvements
 - Visualization: Add a visualization of the puzzle and the agent's actions during training.
 - Advanced Training Techniques: Experiment with different neural network architectures, reward functions, and training strategies to improve performance.
