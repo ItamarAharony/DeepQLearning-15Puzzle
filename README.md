@@ -108,6 +108,7 @@ Given the following 15-puzzle state:
 13 14 0  15
 ```
 where '0' is the empty tile.
+The output should look like:
 
 ```
 Current configuration: 
