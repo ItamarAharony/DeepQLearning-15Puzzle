@@ -74,9 +74,19 @@ Given the following 15-puzzle state:
 5  6  7  8
 9  10 11 12
 13 14 0  15
-
 ```
 where '0' is the empty tile.
+
+```
+Current configuration: 
+[[ 1  2  3  4]
+ [ 5  6  7  8]
+ [ 9 10 11 12]
+ [13 14  0  15]]
+
+Suggested next move: move blank (zero) tile RIGHT if possible
+```
+
 ## Future Improvements
 - Visualization: Add a visualization of the puzzle and the agent's actions during training.
 - Advanced Training Techniques: Experiment with different neural network architectures, reward functions, and training strategies to improve performance.
