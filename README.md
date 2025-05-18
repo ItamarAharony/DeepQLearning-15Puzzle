@@ -2,7 +2,7 @@
 
 # 15-Puzzle Solver using Deep Q-Learning (DQN)
 
-This project implements a Deep Q-Learning (DQN) agent to solve the classic 15-puzzle game. The agent is trained using reinforcement learning to learn how to solve the puzzle from randomly shuffled states.
+This project implements a Deep Q-Learning (DQN) agent to solve the classic 15-puzzle game. The agent is trained using reinforcement learning to learn how to solve the puzzle from randomly shuffled states. This is a simplification of a freelance project whose complete implementation has been kept confidential.
 
 ## Project Structure
 
